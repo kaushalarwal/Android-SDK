@@ -27,7 +27,7 @@ The OttuCheckout SDK collects data to help us improve our products and prevent f
 
 ## Requirements
 
-The OttuCheckout requires Xcode 13.0 or later and is compatible with apps targeting iOS 12 or above.
+The OttuCheckout requires IDE to develop android app. Sdk is compatible with minimume sdk 22 and above.
 
 ## Getting started
 
