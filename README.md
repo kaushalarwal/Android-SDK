@@ -41,15 +41,17 @@ Installation
 
 Put below dependency into your gradle
 
-```ruby
-repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+```java
+allprojects {
+  repositories {
+	...
+	maven { url 'https://jitpack.io' }
+  }
+}
     
-    	dependencies {
-	        implementation 'com.github.sdkpayment:Android-SDK:Tag'
-	}
+dependencies {
+       implementation 'com.github.sdkpayment:Android-SDK:Tag'
+}
 ```
 
 *Swift 5.1, 5.0, 4.2, 4.0*
