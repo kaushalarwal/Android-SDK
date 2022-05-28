@@ -7,8 +7,6 @@ The OttuCheckout is iOS SDK makes it quick and easy to build an excellent paymen
 
 **Simplified security**: We make it simple for you to collect sensitive data such as credit card numbers and remain PCI compliant. This means the sensitive data is sent directly to Stripe instead of passing through your server.
 
-**Apple Pay**: We provide a seamless integration with Apple Pay.
-
 **SCA-ready**: The SDK automatically performs native 3D Secure authentication if needed to comply with Strong Customer Authentication regulation in Europe.
 
 **Native UI**: We provide native screens and elements to collect payment details.
@@ -39,13 +37,19 @@ You can create session token with our public API [Click here](https://app.apiary
 Installation
 ==========================
 
-#### Installation with CocoaPods
+#### Installation with dependecy
 
-***OttuCheckout:*** OttuCheckout is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+Put below dependency into your gradle
 
 ```ruby
-pod 'Ottu'
+repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+    
+    	dependencies {
+	        implementation 'com.github.sdkpayment:Android-SDK:Tag'
+	}
 ```
 
 *Swift 5.1, 5.0, 4.2, 4.0*
