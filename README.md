@@ -54,61 +54,39 @@ dependencies {
 }
 ```
 
-*Swift 5.1, 5.0, 4.2, 4.0*
+Below is the sample code of how you can use Ottu Payment SDK.
 
-In ViewController.swift, just import Ottu framework and initalize Ottu SDK.
+```java
+	
+  OttoPaymentSdk ottuPaymentSdk = new OttoPaymentSdk(MainActivity.this);
+                        ottuPaymentSdk.setApiId("Api_Id");
+                        ottuPaymentSdk.setMerchantId("Merchant_Id");
+                        ottuPaymentSdk.setSessionId("Session_id"); // Retrive from public API
+                        ottuPaymentSdk.setAmount("100.00"); // String Value
+                        ottuPaymentSdk.setLocal(etLocalLan.getText().toString().trim()); // en or ar
+                        ottuPaymentSdk.build();
+	
+```
 
-```swift
-import Ottu
+Get payment result in onActivityResult menthod in Activity.
+	
+```java
+	  @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK ){
+            if (requestCode == OttuPaymentResult ){
+                SocketRespo paymentResult = (SocketRespo) data.getSerializableExtra("paymentResult");
+                textView.setText(paymentResult.status);
+	        textView.setText(paymentResult.message);
+	        textView.setText(paymentResult.order_no);
+	        textView.setText(paymentResult.operation);
+            }
 
-class ViewController: UIViewController,OttuDelegate {
-
-    var responseDict : [String:Any]?
-    var message = ""
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        let sessionId = "ENTER_YOUR_SESSION_ID"
-        _ = Ottu.init(sessionId, merchantId: "MERCHANT_ID", viewController: self, delegate: self,,language: "ENTER_LANGUAGE_ID_en_or_ar")
-    }
-    
-    func errorCallback(message: String, response: [String : Any]?) {
-        responseDict = response
-        self.message = "Error"
-        self.dismissed()
-
-    }
-    
-    func cancelCallback(message: String, response: [String : Any]?) {
-        responseDict = response
-        self.message = "Cancel"
-        self.dismissed()
-    }
-    
-    func successCallback(message: String, response: [String : Any]?) {
-        responseDict = response
-        self.message = "Success"
-        self.dismissed()
-    }
-    
-    func beforeRedirect() {
-        
-    }
-    
-    func dismissed() {
-        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-            let alert = UIAlertController(title: self.message.capitalized, message: "\(String(describing: self.responseDict))", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
         }
     }
-    
-}
+	
 ```
-## Inetgrate Apple pay
-
-**Note**: To inetgrate apple pay you need to enable apple pay in capabilites in your project. 
-
 
 ## Licenses
 
